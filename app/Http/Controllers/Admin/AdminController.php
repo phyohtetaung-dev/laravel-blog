@@ -73,6 +73,6 @@ class AdminController extends Controller
             'new_password' => Hash::make($data['new_password']),
         ]);
 
-        return redirect('/')->with('success', 'Change Password Successfully.');
+        return to_route('admin.index')->with('success', 'Change Password Successfully.');
     }
 }
