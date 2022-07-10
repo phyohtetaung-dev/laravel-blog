@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class UpdateProfileRequest extends FormRequest
+class StoreHomeSliderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +24,10 @@ class UpdateProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore(auth()->id())],
-            'profile' => ['nullable', 'mimes:jpg,png,jpeg,gif,svg', 'max:2000'],
+            'title' => ['required', 'string', 'max:255'],
+            'short_title' => ['required', 'string', 'max:255'],
+            'video_url' => ['required', 'string', 'max:255'],
+            'image' => ['required', 'mimes:jpg,png,jpeg,gif,svg', 'max:2000'],
         ];
     }
 }

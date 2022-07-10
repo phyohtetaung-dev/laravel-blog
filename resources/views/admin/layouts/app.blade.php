@@ -173,11 +173,12 @@
             'warning': @json(session('warning')),
             'error': @json(session('error')),
         }
+        toastr.options = {
+          "positionClass": "toast-bottom-right",
+        }
         for (const type in alert) {
             const msg = alert[type];
-            if(msg) {
-                toastr[type](msg);
-            }
+            if(msg) toastr[type](msg);
         }
     </script>
 

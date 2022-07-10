@@ -3,7 +3,7 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="{{ url('/') }}" class="logo logo-dark">
+                <a href="{{ route('admin.index') }}" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="{{ asset('backend/assets/images/logo-sm.png') }}" alt="logo-sm" height="22">
                     </span>
@@ -12,7 +12,7 @@
                     </span>
                 </a>
 
-                <a href="{{ url('/') }}" class="logo logo-light">
+                <a href="{{ route('admin.index') }}" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="{{ asset('backend/assets/images/logo-sm.png') }}" alt="logo-sm-light" height="22">
                     </span>
@@ -55,10 +55,10 @@
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
                     <a class="dropdown-item" href="{{ route('admin.profile') }}">
-                        <i class="fa fa-user align-middle me-1" aria-hidden="true"></i> Profile
+                        <i class="ri-user-line align-middle me-1" aria-hidden="true"></i> Profile
                     </a>
                     <a class="dropdown-item" href="{{ route('admin.change-password') }}">
-                        <i class="fa fa-key align-middle me-1" aria-hidden="true"></i> Change Password
+                        <i class="ri-key-line align-middle me-1" aria-hidden="true"></i> Change Password
                     </a>
                     <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end mt-1">11</span><i
                             class="ri-settings-2-line align-middle me-1"></i> Settings</a>

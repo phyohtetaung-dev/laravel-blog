@@ -45,36 +45,46 @@
                         <!-- Session Status -->
                         <x-auth-session-status class="mb-4" :status="session('status')" />
 
-                        <!-- Validation Errors -->
-                        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
                         <form method="POST" action="{{ route('register') }}" class="form-horizontal mt-3">
                             @csrf
 
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
-                                    <input class="form-control" type="text" name="name" value="{{ old('name') }}"
-                                        placeholder="Username" autofocus>
+                                    <input class="form-control @error('name') is-invalid @enderror" type="text"
+                                        name="name" value="{{ old('name') }}" placeholder="Username" autofocus>
+                                    @error('name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
-                                    <input class="form-control" type="text" name="email" value="{{ old('email') }}"
-                                        placeholder="Email">
+                                    <input class="form-control @error('email') is-invalid @enderror" type="text"
+                                        name="email" value="{{ old('email') }}" placeholder="Email">
+                                    @error('email')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
-                                    <input class="form-control" type="password" name="password" placeholder="Password">
+                                    <input class="form-control @error('password') is-invalid @enderror" type="password"
+                                        name="password" placeholder="Password">
+                                    @error('password')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="form-group mb-3 row">
                                 <div class="col-12">
-                                    <input class="form-control" type="password" name="password_confirmation"
-                                        placeholder="Confirm Password">
+                                    <input class="form-control @error('password_confirmation') is-invalid @enderror"
+                                        type="password" name="password_confirmation" placeholder="Confirm Password">
+                                    @error('password_confirmation')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 

@@ -9,37 +9,51 @@
 
                 <h4 class="card-title mb-4">Change Password</h4>
 
-                <!-- Validation Errors -->
-                <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
                 <form action="{{ route('admin.update-password', auth()->id()) }}" method="POST">
                     @csrf
                     @method('PUT')
 
                     <div class="row mb-3">
-                        <label for="old_password" class="col-sm-2 col-form-label">Old Password</label>
+                        <label for="old_password" class="col-sm-2 col-form-label">
+                            Old Password <span class="text-danger">*</span>
+                        </label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="password" placeholder="Old Password" name="old_password">
+                            <input class="form-control @error('old_password') is-invalid @enderror" type="password"
+                                placeholder="Old Password" name="old_password">
+                            @error('old_password')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <!-- end row -->
                     <div class="row mb-3">
-                        <label for="new_password" class="col-sm-2 col-form-label">New Password</label>
+                        <label for="new_password" class="col-sm-2 col-form-label">
+                            New Password <span class="text-danger">*</span>
+                        </label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="password" placeholder="New Password" name="new_password">
+                            <input class="form-control @error('new_password') is-invalid @enderror" type="password"
+                                placeholder="New Password" name="new_password">
+                            @error('new_password')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <!-- end row -->
                     <div class="row mb-3">
-                        <label for="password_confirmation" class="col-sm-2 col-form-label">Confirm Password</label>
+                        <label for="password_confirmation" class="col-sm-2 col-form-label">
+                            Confirm Password <span class="text-danger">*</span>
+                        </label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="password" placeholder="Confirm Password"
-                                name="password_confirmation">
+                            <input class="form-control @error('password_confirmation') is-invalid @enderror"
+                                type="password" placeholder="Confirm Password" name="password_confirmation">
+                            @error('password_confirmation')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <!-- end row -->
                     <button type="submit" class="btn btn-info waves-effect waves-light mt-2">
-                        Update Password
+                        Update
                     </button>
                 </form>
             </div>

@@ -15,7 +15,7 @@
             <h4 class="card-title">Joined at: {{ $user->created_at->diffForHumans() }}</h4>
             <hr>
             <a href="{{ route('admin.edit-profile') }}" class="btn btn-info waves-effect waves-light">
-                Edit Profile
+                Edit
             </a>
         </div>
     </div>

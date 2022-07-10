@@ -6,10 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UpdatePasswordRequest;
 use App\Http\Requests\Admin\UpdateProfileRequest;
 use App\Models\User;
+use App\Services\ImageService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -49,12 +49,7 @@ class AdminController extends Controller
         $data = $request->validated();
         if ($request->hasFile('profile')) {
             $file = $request->file('profile');
-            $dir = sprintf('images/%s/%s/%s', date('Y'), date('m'), date('d'));
-            $originalName = $file->getClientOriginalName();
-            $extension = $file->getClientOriginalExtension();
-            $name = md5(round(microtime(true) * 1000).str()->random(6).$originalName).'.'.$extension;
-            $path = $file->storeAs($dir, $name);
-            $data['profile'] = Storage::url($path);
+            $data['profile'] = (new ImageService)->upload($file);
         }
         $user->update($data);
 
